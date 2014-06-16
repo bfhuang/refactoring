@@ -6,7 +6,6 @@ import java.util.List;
 public class Customer {
 	private String name;
 	private List<Rental> rentals = new ArrayList<Rental>();
-	private double totalAmount;
 
 	public Customer(String name) {
 		this.name = name;

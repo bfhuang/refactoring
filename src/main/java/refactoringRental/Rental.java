@@ -1,7 +1,5 @@
 package refactoringRental;
 
-import static refactoringRental.Movie.NEW_RELEASE;
-
 public class Rental {
 	private Movie movie;
 	private int daysRented;
@@ -24,9 +22,7 @@ public class Rental {
 	}
 
 	public int getFrequentPoint() {
-		if ((movie.getPriceCode() == NEW_RELEASE)
-				&& getDaysRented() > 1)
-			return 2;
-		return 1;
+		return movie.getFrequentPoint(daysRented);
 	}
+
 }

@@ -1,21 +1,23 @@
 package refactoringRental;
 
+import static refactoringRental.Movie.NEW_RELEASE;
+
 public class Rental {
-    private Movie movie;
-    private int daysRented;
+	private Movie movie;
+	private int daysRented;
 
-    public Rental(Movie movie, int daysRented) {
-        this.movie = movie;
-        this.daysRented = daysRented;
-    }
+	public Rental(Movie movie, int daysRented) {
+		this.movie = movie;
+		this.daysRented = daysRented;
+	}
 
-    public int getDaysRented() {
-        return daysRented;
-    }
+	public int getDaysRented() {
+		return daysRented;
+	}
 
-    public Movie getMovie() {
-        return movie;
-    }
+	public Movie getMovie() {
+		return movie;
+	}
 
 	public double getCharge() {
 		double thisAmount = 0;
@@ -25,7 +27,7 @@ public class Rental {
 				if (getDaysRented() > 2)
 					thisAmount += (getDaysRented() - 2) * 1.5;
 				break;
-			case Movie.NEW_RELEASE:
+			case NEW_RELEASE:
 				thisAmount += getDaysRented() * 3;
 				break;
 			case Movie.CHILDREN:
@@ -35,5 +37,13 @@ public class Rental {
 				break;
 		}
 		return thisAmount;
+	}
+
+	public int getFrequentPoint() {
+		if ((movie.getPriceCode() == NEW_RELEASE)
+				&& getDaysRented() > 1)
+			return 2;
+		else
+			return 1;
 	}
 }
